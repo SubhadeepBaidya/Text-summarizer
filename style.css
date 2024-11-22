@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     overflow-x: hidden;
     transition: all 0.3s ease-in-out;
   }
@@ -20,7 +20,7 @@ body {
   
   /* Card Container */
   .card {
-    max-width: 900px;
+    max-width: 800px;
     width: 100%;
     border: none;
     border-radius: 1rem;
@@ -28,7 +28,6 @@ body {
     overflow: hidden;
     background: #fff;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    padding: 20px;
   }
   
   body.dark-mode .card {
@@ -42,10 +41,9 @@ body {
     color: #fff;
     padding: 20px;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
     border-bottom: 2px solid #ddd;
-    border-radius: 1rem 1rem 0 0;
   }
   
   .card-header p {
@@ -54,18 +52,26 @@ body {
     margin: 5px 0 0;
   }
   
-  /* Input Section */
+  /* Form Elements */
   textarea,
   select,
   input {
     border-radius: 0.5rem;
     border: 1px solid #ddd;
-    padding: 12px;
+    padding: 10px;
     font-size: 1rem;
     width: 100%;
     background: #f9f9f9;
     box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  
+  body.dark-mode textarea,
+  body.dark-mode select,
+  body.dark-mode input {
+    background: #444;
+    border: 1px solid #555;
+    color: #fff;
   }
   
   textarea:focus,
@@ -75,42 +81,10 @@ body {
     outline: none;
   }
   
-  textarea {
-    resize: none;
-    min-height: 120px;
-  }
-  
-  /* Dark Mode Adjustments */
-  body.dark-mode textarea,
-  body.dark-mode select,
-  body.dark-mode input {
-    background: #444;
-    border: 1px solid #555;
-    color: #fff;
-  }
-  
-  /* PDF Upload Styling */
-  #pdfUpload {
-    border-radius: 0.5rem;
-  }
-  
-  /* Form Row Styling */
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  
-  .row > .col-md-4,
-  .row > .col-md-6 {
-    flex: 1;
-    min-width: 240px;
-  }
-  
   /* Buttons */
   .btn {
     border-radius: 0.5rem;
-    padding: 12px 15px;
+    padding: 10px 15px;
     font-size: 1rem;
     font-weight: bold;
     letter-spacing: 0.5px;
@@ -152,9 +126,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-top: 15px;
-    gap: 10px;
   }
   
   .spinner-border {
@@ -173,7 +144,6 @@ body {
     border-radius: 0.5rem;
     background: #f9f9f9;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
   }
   
   body.dark-mode #outputSection {
@@ -185,14 +155,6 @@ body {
     border: none;
     box-shadow: none;
     resize: none;
-    min-height: 100px;
-  }
-  
-  /* Copy Button */
-  #copyBtn {
-    float: right;
-    margin-top: 10px;
-    font-size: 0.85rem;
   }
   
   /* Footer */
@@ -202,7 +164,6 @@ body {
     text-align: center;
     font-size: 0.85rem;
     border-top: 2px solid #ddd;
-    border-radius: 0 0 1rem 1rem;
   }
   
   body.dark-mode .card-footer {
@@ -210,27 +171,8 @@ body {
     border-top: 2px solid #444;
   }
   
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .card-header {
-      font-size: 1.5rem;
-    }
-  
-    .btn {
-      padding: 10px;
-      font-size: 0.9rem;
-    }
-  
-    textarea {
-      min-height: 100px;
-    }
-  }
-  
   /* Animations */
-  textarea,
-  select,
-  button,
-  .row {
+  textarea, select, button {
     animation: fadeIn 0.5s ease-in-out;
   }
   
