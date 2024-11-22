@@ -1,6 +1,6 @@
 const huggingFaceApiKey = "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"; // Replace with your Hugging Face API key
 
-// Dark Mode Toggle
+// Dark Mode Toggle (optional)
 document.getElementById("darkModeToggle").addEventListener("change", (event) => {
   document.body.classList.toggle("dark-mode", event.target.checked);
 });
@@ -28,12 +28,19 @@ document.getElementById("pdfUpload").addEventListener("change", async (event) =>
     }
 
     document.getElementById("inputText").value = extractedText;
+    updateWordCount(extractedText); // Update word count after text extraction
   } catch (error) {
     alert("Failed to extract text from PDF: " + error.message);
   } finally {
     document.getElementById("loading").classList.add("d-none");
   }
 });
+
+// Update Word Count
+function updateWordCount(text) {
+  const wordCount = text.trim().split(/\s+/).length;
+  document.getElementById("wordCount").textContent = `Word Count: ${wordCount}`;
+}
 
 // Summarize Text
 document.getElementById("summarizeBtn").addEventListener("click", async () => {
@@ -47,11 +54,12 @@ document.getElementById("summarizeBtn").addEventListener("click", async () => {
   }
 
   document.getElementById("loading").classList.remove("d-none");
-  document.getElementById("summaryOutput").value = "";
+  document.getElementById("summaryOutput").textContent = "";
 
   try {
     const summary = await summarizeText(text, language, length);
-    document.getElementById("summaryOutput").value = summary;
+    document.getElementById("summaryOutput").textContent = summary;
+    updateWordCount(summary); // Update word count for the summary
   } catch (error) {
     alert("Error summarizing text: " + error.message);
   } finally {
@@ -61,7 +69,7 @@ document.getElementById("summarizeBtn").addEventListener("click", async () => {
 
 // Download Summary
 document.getElementById("downloadBtn").addEventListener("click", () => {
-  const summary = document.getElementById("summaryOutput").value;
+  const summary = document.getElementById("summaryOutput").textContent;
   if (!summary.trim()) {
     alert("No summary to download.");
     return;
@@ -76,7 +84,7 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
 
 // Copy Summary
 document.getElementById("copyBtn").addEventListener("click", () => {
-  const summary = document.getElementById("summaryOutput").value;
+  const summary = document.getElementById("summaryOutput").textContent;
   navigator.clipboard.writeText(summary).then(() => alert("Copied to clipboard!"));
 });
 
@@ -117,3 +125,6 @@ async function translateText(text, targetLang) {
   const data = await response.json();
   return data.translatedText || text;
 }
+
+
+   
