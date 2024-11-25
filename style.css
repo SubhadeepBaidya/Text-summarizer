@@ -1,189 +1,84 @@
 /* General Styling */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f3ec78, #af4261);
-    color: #333;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow-x: hidden;
-    transition: all 0.3s ease-in-out;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f3ec78, #af4261);
+  color: #333;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  overflow-x: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode {
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+  color: #fff;
+}
+
+/* Card Container */
+.card {
+  max-width: 800px;
+  width: 100%;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: #fff;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+body.dark-mode .card {
+  background: #2c2c2c;
+  color: #fff;
+}
+
+/* Center the container precisely */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack elements vertically */
+  min-height: 100vh; /* Full height to center vertically */
+  padding: 20px; /* Add padding for smaller screens */
+}
+
+/* Card Header */
+.card-header {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+}
+
+.card-header p {
+  font-size: 0.9rem;
+  font-weight: normal;
+  margin: 5px 0 0;
+}
+
+/* Other styles remain the same */
+
+/* Adjustments for responsive alignment */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
   }
-  
-  body.dark-mode {
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
-    color: #fff;
-  }
-  
-  /* Card Container */
+
   .card {
-    max-width: 800px;
-    width: 100%;
-    border: none;
-    border-radius: 1rem;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    background: #fff;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    width: 90%;
+    margin: 0 auto; /* Ensures it's centered on smaller screens */
   }
+}
+
+    
+ 
   
-  body.dark-mode .card {
-    background: #2c2c2c;
-    color: #fff;
-  }
-  
-  /* Card Header */
-  .card-header {
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-bottom: 2px solid #ddd;
-  }
-  
-  .card-header p {
-    font-size: 0.9rem;
-    font-weight: normal;
-    margin: 5px 0 0;
-  }
-  
-  /* Form Elements */
-  textarea,
-  select,
-  input {
-    border-radius: 0.5rem;
-    border: 1px solid #ddd;
-    padding: 10px;
-    font-size: 1rem;
-    width: 100%;
-    background: #f9f9f9;
-    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  }
-  
-  body.dark-mode textarea,
-  body.dark-mode select,
-  body.dark-mode input {
-    background: #444;
-    border: 1px solid #555;
-    color: #fff;
-  }
-  
-  textarea:focus,
-  select:focus,
-  input:focus {
-    border-color: #2575fc;
-    outline: none;
-  }
-  
-  /* Buttons */
-  .btn {
-    border-radius: 0.5rem;
-    padding: 10px 15px;
-    font-size: 1rem;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-  }
-  
-  .btn-primary {
-    background: linear-gradient(135deg, #2575fc, #6a11cb);
-    color: #fff;
-    border: none;
-  }
-  
-  .btn-primary:hover {
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    transform: translateY(-2px);
-  }
-  
-  .btn-outline-primary {
-    background: transparent;
-    color: #2575fc;
-    border: 2px solid #2575fc;
-  }
-  
-  .btn-outline-primary:hover {
-    background: #2575fc;
-    color: #fff;
-    transform: translateY(-2px);
-  }
-  
-  /* Dark Mode Toggle */
-  #darkModeToggle {
-    transform: scale(1.2);
-    margin-left: 10px;
-  }
-  
-  /* Loading Spinner */
-  #loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .spinner-border {
-    width: 3rem;
-    height: 3rem;
-  }
-  
-  .spinner-border.text-primary {
-    color: #2575fc;
-  }
-  
-  /* Output Section */
-  #outputSection {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 0.5rem;
-    background: #f9f9f9;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  body.dark-mode #outputSection {
-    background: #333;
-  }
-  
-  textarea#summaryOutput {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    resize: none;
-  }
-  
-  /* Footer */
-  .card-footer {
-    background: #f3f3f3;
-    padding: 10px;
-    text-align: center;
-    font-size: 0.85rem;
-    border-top: 2px solid #ddd;
-  }
-  
-  body.dark-mode .card-footer {
-    background: #2c2c2c;
-    border-top: 2px solid #444;
-  }
-  
-  /* Animations */
-  textarea, select, button {
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+   
+ 
+ 
+   
